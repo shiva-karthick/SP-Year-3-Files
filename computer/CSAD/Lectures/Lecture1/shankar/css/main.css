@@ -1,0 +1,16 @@
+h1 {
+    font-style: oblique;
+    text-align: center;
+}
+
+p {
+    font-size: 0.7cm;
+    background-color: khaki;
+}
+
+.pageSeparator {
+    color: blueviolet;
+    width: 30em;
+    border-width: 5px;
+    border-style: dashed;
+}
