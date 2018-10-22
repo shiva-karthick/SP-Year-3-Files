@@ -14,3 +14,35 @@ p {
     border-width: 5px;
     border-style: dashed;
 }
+
+/* Default CSS Settings
+Most browsers will display the <a> element with the following default values: */
+
+a:link,
+a:visited {
+    color: (internal value);
+    text-decoration: underline;
+    cursor: auto;
+}
+
+a:link:active,
+a:visited:active {
+    color: (internal value);
+}
+
+ul {
+    list-style-type: lower-alpha;
+}
+
+ol {
+    list-style-type: decimal;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    max-width: 100%;
+    height: auto;
+}
