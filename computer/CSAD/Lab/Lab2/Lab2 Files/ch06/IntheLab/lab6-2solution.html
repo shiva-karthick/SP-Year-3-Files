@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Lab6-2</title>
+</head>
+<body>
+
+<form method="post" action="mailto:email@isp.com">
+
+<header style="text-align: center">
+	<img src="music_clef_sm.png" width="40" height="68" alt="Music note" /> &nbsp;
+	<img src="music_clef_sm.png" width="40" height="68" alt="Music note" /> &nbsp;
+	<img src="music_clef_sm.png" width="40" height="68" alt="Music note" /> &nbsp;
+	<img src="music_clef_sm.png" width="40" height="68" alt="Music note" /> &nbsp;
+	<img src="music_clef_sm.png" width="40" height="68" alt="Music note" /> &nbsp;
+	<br /><span style="font-size: xx-large">Penelope's Music House&reg; Survey</span>
+	<br /><span style="font-size: small">Please complete the survey and click Submit when finished</span>
+</header>
+
+<br /><fieldset>
+	<br />Last Name: <input name="lastname" type="text" size="25" /> &nbsp; &nbsp;
+	First Name: <input name="firstname" type="text" size="25" /> &nbsp; &nbsp;
+	E-mail address: <input name="email" type="text" size="25" maxlength="25" />
+
+<p>Do you currently take music lessons?
+	<input name="listen" type="radio" value="yes" />Yes 
+	<input name="listen" type="radio" value="no" />No</p>
+
+<p>What instrument do you play?
+	<br /><input name="instrument" type="checkbox" value="piano" />Piano
+	<input name="instrument" type="checkbox" value="violin" />Violin
+	<input name="instrument" type="checkbox" value="cello" />Cello
+	<input name="instrument" type="checkbox" value="drums" />Drums
+	<input name="instrument" type="checkbox" value="Opera" />Opera
+	<input name="type" type="checkbox" value="Ethnic" />Ethnic</p>
+
+
+<p>How often a week do you practice?
+<br /><select name="stations" size="3">
+	<option selected="selected">30 minutes a week</option>
+	<option>30 minutes a day</option>
+	<option>one hour a week</option>
+	<option>one hour a day</option>
+	<option>less than 30 minutes a week</option>
+</select></p>
+
+<p>What other instruments would you like to learn? 
+<br /><textarea name="text1" rows="2" cols="60"></textarea></p>
+</fieldset>
+
+<br /><input type="submit" value="Submit" />
+<input type="reset" value="Reset" />
+
+<br />Thank you for your input.
+
+</form>
+</body>
+</html>

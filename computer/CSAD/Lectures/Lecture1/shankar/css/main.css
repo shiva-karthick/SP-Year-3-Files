@@ -46,3 +46,13 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+th,
+td {
+    padding: 15px;
+    text-align: left;
+}
+
+.tableCSS {
+    display: table;
+}

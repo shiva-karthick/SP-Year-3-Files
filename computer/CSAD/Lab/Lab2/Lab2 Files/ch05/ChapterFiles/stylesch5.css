@@ -1,0 +1,19 @@
+body	{font-family: Arial, Centaur, "Century Gothic";
+		font-size: 11pt;}
+		
+p		{margin-left: 5pt;
+		margin-right: 5pt;}
+		
+.boldword	{color: #030a24; 
+			font-weight: bolder;}
+
+img		{border-color: transparent;}
+
+li.navlist	{display: inline; 
+			list-style-type: none;}
+			
+a			{text-decoration: none;
+			color: #030a24;}
+		
+a:hover		{background: #030a24; 
+			color: #d0a4bb;}

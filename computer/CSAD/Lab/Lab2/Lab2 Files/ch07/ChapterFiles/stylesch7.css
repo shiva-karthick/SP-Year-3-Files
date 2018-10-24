@@ -1,0 +1,14 @@
+img.small	{text-decoration: none;} 
+/* displays no text decoration around images on the left */
+
+div#sizes a img.large	{height: 0; width: 0; border-width: 0;} 
+/* hide the larger image by setting its height and width to zero */
+
+div#sizes a:hover img.large	{position: absolute; top: 68px; left: 170px; 
+							height: 389px; width: 500px;} 
+/* make the larger image appear on the right when a user hovers 
+over smaller image on the left */
+	
+p	{margin-bottom: 26px; margin-top: 26px; font-size: small; 
+	font-family: Verdana, Arial; color: #100375;} 
+/* add bottom and top margins to p elements so they are aligned with the large image */
