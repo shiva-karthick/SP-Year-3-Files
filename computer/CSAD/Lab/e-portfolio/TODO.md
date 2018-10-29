@@ -1,0 +1,4 @@
+- GPS map
+- video
+- change background
+- link to other pages

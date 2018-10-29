@@ -4,46 +4,81 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>shankar</title>
+    <title>My E-portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/style.css" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Placed the javascript file at the bottom -->
+    <!-- <script src="js/script.js"></script> -->
 </head>
 
-<body bgcolor="lightgreen">
-    <h1>My E-Portfolio</h1>
-    <p class="title">Inspiring Computer Engineer</p>
-    <hr>
-    <p class="summary">I have experience with various embedded devices such as PIC and AVR.
-        I also do have experience with FPGAs.
-    </p>
-    <hr class="pageSeparator" width="50%">
+<body>
+    <ul class="menu">
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+    <div class="box">
+        <h3 class="myName">Shankar</h3>
+        <!-- <hr> -->
+        <h3 class="personalProfile">Personal Profile</h3>
+        <p class="summary">A meticulous computer student who is skilled at completing high quality work within
+            production
+            deadlines. <br> Quick-witted in miniature technical details, and able to work alone and provide
+            comprehensive
+            solutions. <br>
+            Strong critical thinking and analytical skills lead to solutions that had a positive impact on
+            company products.
+        </p>
+    </div>
+
+    <div class="w3-content w3-section" style="max-width:500px">
+        <!-- <img class="mySlides" src="assets/shankar.jpeg" style="width:50%"> -->
+        <img class="mySlides" src="assets/CE.jpg" style="width:100%">
+        <img class="mySlides" src="assets/linux.jpg" style="width:100%">
+        <img class="mySlides" src="assets/radio.jpg" style="width:100%">
+    </div>
+
+    <!-- <hr class="pageSeparator" width="50%"> -->
+    <!-- Achievements -->
+    <div class="box">
+        <h3 class="achievements">Key Achievements</h3>
+        <ul class="achievementsList">
+            <li>Recipient of Edusave Merit Bursary(2017)</li><br>
+            <li>Participated in Singapore Junior Chemistry Olympiad (2015)</li><br>
+            <li>Participated in National Olympiad of Informatics (2015)</li>
+        </ul>
+    </div>
+
+    <br>
+
+    <!-- Education -->
+    <div class="box">
+        <h3 class="education">Education</h3>
+        <ul class="educationList">
+            <li>Singapore Polytechnic</li><br>
+            <li>Jurong West Secondary School</li><br>
+            <li>ST.Anthony PS</li>
+        </ul>
+    </div>
+
+    <!-- GPS map -->
+    <div class="box">
+        <h3 class="gps"> Location </h3>
+        <div id="googleMap" style="width:100%;height:400px;"></div>
+    </div>
+
+    <!-- Video -->
+    <!-- Email Link -->
+    <br>
+    <a href="mailto:shankaarshiva@gmail.com" class="myEmail">Email me!</a>
 
     <!-- HTML links (hyperlinks) -->
     <h2 class="myWebsite"> Visit my website
         <a href="https://www.w3schools.com" target="_blank"> https://xyz.com!</a> </h2>
 
-    <!-- lists -->
-    <!-- Tip: Use CSS to style lists. -->
-    <h3 class="education">Education</h3>
-    <ol type="I" start="1">
-        <ul class="title">St.Anthony's primary school</ul>
-        <ul class="title">Jurong West Secondary school</ul>
-    </ol>
-    <h3 class="certifications">Certifications</h3>
-    <ul class="title">Red hat certification </ul>
-    <ul class="title">Java developer certification </ul>
-
-
-    <!-- Images -->
-    <!-- alt-text-Specifies an alternate text for an image -->
-    <p>Machine Learning Embedded Systems Engineer</p>
-    <img src="assets/CE.jpg" alt="Computer Engineer">
-    <br>
-
-
-    <!-- Email Link -->
-    <br>
-    <a href="mailto:shankaarshiva@gmail.com" class="myEmail">Email me!</a>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

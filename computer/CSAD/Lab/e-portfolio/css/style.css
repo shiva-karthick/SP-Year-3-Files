@@ -1,0 +1,162 @@
+h3.myName {
+  text-align: center;
+  font-size: 0.9cm;
+  font-family: "Josefin Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding-top: 40px;
+  color: darkslategray;
+}
+
+body {
+  /* background-color: rgb(159, 230, 240); */
+  background: url("/assets/bg.jpg") no-repeat center center fixed;
+  /* background: #fff; */
+}
+
+ul.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+li {
+  float: left;
+  border-right: 1px solid #bbb;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4caf50;
+}
+
+h3.personalProfile {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: rgb(0, 0, 0);
+  font-family: cursive;
+  font-weight: 700;
+  /* padding-top: -100px; */
+  color: darkslategray;
+}
+
+.summary {
+  text-align: center;
+  font-size: 0.5cm;
+  font-weight: 600;
+  color: darkslategray;
+}
+
+.box {
+  margin-bottom: 20px;
+  padding: 30px 15px;
+  background: #fff;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.mySlides {
+  width: 100%;
+  display: none;
+}
+
+h3.achievements {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: rgb(0, 0, 0);
+  font-family: cursive;
+  font-size: x-large;
+  font-weight: 700;
+  color: darkslategrey;
+}
+
+ul.achievementsList {
+  list-style: disc;
+  position: relative;
+  left: 30%;
+  font-weight: 700;
+  color: darkslategrey;
+  font-size: 0.5cm;
+}
+
+ul.achievements li {
+  float: left;
+  position: relative;
+  font-weight: 700;
+}
+
+h3.education {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: rgb(0, 0, 0);
+  font-family: cursive;
+  text-align: center;
+  font-size: x-large;
+  font-weight: 700;
+  color: darkslategrey;
+}
+
+ul.educationList {
+  list-style: disc;
+  position: relative;
+  left: 30%;
+  font-weight: 700;
+  color: rgb(62, 66, 66);
+  font-size: 0.5cm;
+}
+
+ul.education li {
+  float: left;
+  position: relative;
+}
+
+h3.gps {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-color: rgb(0, 0, 0);
+  font-family: cursive;
+  text-align: center;
+  font-size: x-large;
+  font-weight: 700;
+  color: darkslategrey;
+}
+
+.myEmail {
+  text-align: center;
+}
+
+.pageSeparator {
+  color: blueviolet;
+  width: 30em;
+  border-width: 5px;
+  border-style: dashed;
+}
+
+/* Default CSS Settings
+Most browsers will display the <a> element with the following default values: */
+
+a:link,
+a:visited {
+  color: (internal value);
+  text-decoration: underline;
+  cursor: auto;
+}
+
+a:link:active,
+a:visited:active {
+  color: (internal value);
+}
