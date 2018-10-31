@@ -2,12 +2,16 @@ package com.sp.restaurantlist;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 // Added on my own, IDE did not generated this recommended by SO
@@ -24,7 +28,8 @@ public class RestaurantList extends AppCompatActivity {
     private Button buttonSave;
 
     private List<Restaurant> model = new ArrayList<Restaurant>();
-    private ArrayAdapter<Restaurant> adapter = null;
+//    private ArrayAdapter<Restaurant> adapter = null;
+    private RestaurantAdapter adapter = null;
     private ListView list;
 
 
@@ -43,7 +48,8 @@ public class RestaurantList extends AppCompatActivity {
         buttonSave.setOnClickListener(onSave);
 
         list = (ListView) findViewById(R.id.restaurants);
-        adapter = new ArrayAdapter<Restaurant>(this, android.R.layout.simple_list_item_1, model);
+//        adapter = new ArrayAdapter<Restaurant>(this, android.R.layout.simple_list_item_1, model);
+        adapter = new RestaurantAdapter();
         list.setAdapter(adapter);
     }
 
@@ -104,4 +110,52 @@ public class RestaurantList extends AppCompatActivity {
 
         }
     };
+
+    static class RestaurantHolder{
+        private TextView restName = null;
+        private TextView addr = null;
+        private ImageView icon = null;
+
+        RestaurantHolder(View row){
+            restName = (TextView)row.findViewById(R.id.restName);
+            addr = (TextView)row.findViewById(R.id.restAddr);
+            icon = (ImageView)row.findViewById(R.id.icon);
+        }
+
+        void populateFrom(Restaurant r){
+            restName.setText(r.getName());
+            addr.setText(r.getAddress());
+            if (r.getRestaurantType().equals("Chinese")){
+                icon.setImageResource(R.drawable.ball_red);
+            }else if (r.getRestaurantType().equals("Western")){
+                icon.setImageResource(R.drawable.ball_yellow);
+            }else{
+                icon.setImageResource(R.drawable.ball_green);
+            }
+        }
+
+    }
+
+    class RestaurantAdapter extends ArrayAdapter<Restaurant>{
+        RestaurantAdapter(){
+            super(RestaurantList.this,R.layout.row,model);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent){
+            View row = convertView;
+            RestaurantHolder holder;
+            if (row == null){
+                LayoutInflater inflater = getLayoutInflater();
+                row = inflater.inflate(R.layout.row, parent, false);
+                holder = new RestaurantHolder(row);
+                row.setTag(holder);
+            }else{
+                holder = (RestaurantHolder)row.getTag();
+            }
+            holder.populateFrom(model.get(position));
+            return (row);
+        }
+    }
 }
+
