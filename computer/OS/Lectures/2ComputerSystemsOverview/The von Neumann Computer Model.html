@@ -1,0 +1,2168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0055)http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" class="gr__c-jump_com"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>The von Neumann Computer Model</title>
+        
+        <meta http-equiv="Expires" content="Wed, 31 Jan 2007 23:59:59 GMT">
+    </head>
+    <body data-gr-c-s-loaded="true">
+    <p>
+        CIS-77 Home
+        <a href="http://www.c-jump.com/CIS77/CIS77syllabus.htm"><tt>http://www.c-jump.com/CIS77/CIS77syllabus.htm</tt></a>
+    </p>
+    <h3>
+        The von Neumann Computer Model
+    </h3>
+    <hr>
+        <ol>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0010_von_neumann">The von Neumann Computer Model</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0020_von_neumann_components">Components of the Von Neumann Model</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0030_von_neumann_components">Communication Between Memory and Processing Unit</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0040_data_path">CPU data-path</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0050_memory_operations">Memory Operations</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0060_mar_mdr">Understanding the MAR and the MDR</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0070_mar_mdr_cont">Understanding the MAR and the MDR, Cont.</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0080_processing_unit">ALU, the Processing Unit</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0090_word_length">ALU and the Word Length</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0100_control_unit">Control Unit</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0110_control_unit_cont">Control Unit, Cont.</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0120_input_output">Input/Output</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0130_input_output_ports">Input/Output Ports</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0140_input_output_address_space">Input/Output Address Space</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0150_input_output_protected">Console Input/Output in Protected Memory Mode</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0160_instruction_processing">Instruction Processing</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0170_instruction_components">Instruction Components</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0180_intel">Why Learn Intel x86 ISA ?</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0190_x86_instruction_set">Design of the x86 CPU Instruction Set</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0200_instruction_set">CPU Instruction Set</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0210_intel_solutions">History of IBM PC</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0220_x86_family">Early x86 Processor Family</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0230_cpu8086">8086 and 8088 CPU</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0240_cpu80186">80186 CPU</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0250_cpu80286">80286 CPU</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0260_cpu80386">80386 CPU</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0270_cpu80386_cont">80386 CPU, Cont.</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0280_cpu80486">80486 CPU</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0290_cpu80586">Pentium (Intel 80586)</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0300_cpu_pentium_pro">Pentium Pro</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0310_cpu_pentium_ii">Pentium II</a></li>
+            <li><a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html#V77_0320_cpu_itanium">Itanium processor</a></li>
+        </ol>
+<a id="V77_0010_von_neumann"></a>
+
+
+    <h3>
+        1. The von Neumann Computer Model
+    </h3>
+ <hr>
+     <table border="0" cellspacing="0" cellpadding="2">
+         <tbody><tr>
+             <td valign="top">
+ <ul>
+  <li>
+   <p>
+    Von Neumann computer systems contain three main building blocks:
+   </p>
+   <ul style="list-style-type:none;">
+    <li>
+     <p>
+       the central processing unit (CPU),
+     </p>
+    </li>
+    <li>
+     <p>
+      memory,
+     </p>
+    </li>
+    <li>
+     <p>
+      and input/output devices (I/O).
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    These three components are connected together using the <em>system bus</em>.
+   </p>
+  </li>
+  <li>
+   <p>
+    The most prominent items within the CPU are the registers: they can be manipulated directly by a computer program.
+   </p>
+  </li>
+ </ul>
+             </td>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     The following block diagram shows major relationship between CPU components:
+   </p>
+   <p>
+    &nbsp;
+    <img src="./The von Neumann Computer Model_files/computer_system.png" alt="Simplified view of computer system">
+   </p>
+  </li>
+ </ul>
+             </td>
+         </tr>
+     </tbody></table>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0020_von_neumann_components"></a>
+
+
+    <h3>
+        2. Components of the Von Neumann Model
+    </h3>
+ <hr>
+     <table border="0" cellspacing="0" cellpadding="2">
+         <tbody><tr>
+             <td valign="top">
+ <ol>
+  <li>
+   <p>
+     <strong>Memory</strong>: Storage of information (data/program)
+   </p>
+  </li>
+  <li>
+   <p>
+    <strong>Processing Unit</strong>: Computation/Processing of Information
+   </p>
+  </li>
+  <li>
+   <p>
+    <strong>Input</strong>: Means of getting information into the computer. e.g. keyboard, mouse
+   </p>
+  </li>
+  <li>
+   <p>
+    <strong>Output</strong>: Means of getting information out of the computer. e.g. printer, monitor
+   </p>
+  </li>
+  <li>
+   <p>
+    <strong>Control Unit</strong>: Makes sure that all the other parts perform their tasks correctly and at the correct time.
+   </p>
+  </li>
+ </ol>
+             </td>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     The von Neumann Machine:
+   </p>
+   <p>
+    &nbsp;
+    <img src="./The von Neumann Computer Model_files/figure_4_1.png" alt="The von Neumann Machine">
+   </p>
+  </li>
+ </ul>
+             </td>
+         </tr>
+     </tbody></table>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0030_von_neumann_components"></a>
+
+
+    <h3>
+        3. Communication Between Memory and Processing Unit
+    </h3>
+ <hr>
+     <table border="0" cellspacing="0" cellpadding="2">
+         <tbody><tr>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     Communication between memory and processing unit consists of two <em>registers</em>:
+   </p>
+   <ul>
+    <li>
+     <p>
+      Memory Address Register (MAR).
+     </p>
+    </li>
+    <li>
+     <p>
+      Memory Data Register (MDR).
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    <span style="color: blue">To read</span>,
+   </p>
+   <ol>
+    <li>
+     <p>
+       The address of the location is put in MAR.
+     </p>
+    </li>
+    <li>
+     <p>
+      The memory is <em>enabled</em> for a read.
+     </p>
+    </li>
+    <li>
+     <p>
+      The value is put in MDR by the memory.
+     </p>
+    </li>
+   </ol>
+  </li>
+  <li>
+   <p>
+    <span style="color: blue">To write</span>,
+   </p>
+   <ol>
+    <li>
+     <p>
+       The address of the location is put in MAR.
+     </p>
+    </li>
+    <li>
+     <p>
+      The data is put in MDR.
+     </p>
+    </li>
+    <li>
+     <p>
+      The <strong>Write Enable</strong> signal is <em>asserted</em>.
+     </p>
+    </li>
+    <li>
+     <p>
+      The value in MDR is written to the location specified.
+     </p>
+    </li>
+   </ol>
+  </li>
+ </ul>
+             </td>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+   <p>
+    &nbsp;
+    <img src="./The von Neumann Computer Model_files/figure_4_1a.png" alt="The von Neumann Machine">
+   </p>
+  </li>
+ </ul>
+             </td>
+         </tr>
+     </tbody></table>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0040_data_path"></a>
+
+
+    <h3>
+        4. CPU data-path
+    </h3>
+ <hr>
+     <table border="0" cellspacing="0" cellpadding="2">
+         <tbody><tr>
+             <td valign="top">
+ <ul>
+  <li>
+   <p>
+    Hardware units like <strong>ALU</strong>'s, <strong>registers</strong>, <strong>memory</strong>, etc., are linked together into a <em>data-path</em>.
+   </p>
+  </li>
+  <li>
+   <p>
+    The flow of bits around the data-path is controlled by the "gates" which allow the bits to flow (on) or not flow (off) through the data-path.
+   </p>
+  </li>
+  <li>
+   <p>
+    The binary instructions (1 = on; 0 = off) that control the flow are called <em>micro-instructions</em>.
+   </p>
+  </li>
+ </ul>
+             </td>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+    <img src="./The von Neumann Computer Model_files/datapath.gif" alt="CPU data-path">
+   </p>
+  </li>
+ </ul>
+             </td>
+         </tr>
+     </tbody></table>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     Simplified
+    <a href="./The von Neumann Computer Model_files/Structure_8086.gif" target="_blank">x86 data path</a>
+    :
+   </p>
+   <p>
+    &nbsp;
+    <img src="./The von Neumann Computer Model_files/Structure_8086.gif" alt="x86 data path">
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0050_memory_operations"></a>
+
+
+    <h3>
+        5. Memory Operations
+    </h3>
+ <hr>
+     <table border="0" cellspacing="0" cellpadding="2">
+         <tbody><tr>
+             <td valign="top">
+ <ul>
+  <li>
+   <p>
+    There are two key operations on memory:
+   </p>
+   <ol>
+    <li>
+     <p>
+       <strong>fetch( address )</strong> returns value without changing the value stored at that address.
+     </p>
+    </li>
+    <li>
+     <p>
+      <strong>store( address, value )</strong> writes new value into the cell at the given address.
+     </p>
+    </li>
+   </ol>
+  </li>
+  <li>
+   <p>
+    This type of memory is <em>random-access</em>, meaning that CPU can access any value of the array at any time (vs. sequential access, like on a tape).
+   </p>
+  </li>
+  <li>
+   <p>
+    Such memories are called <strong>RAM</strong> (random-access memory.)
+   </p>
+  </li>
+  <li>
+   <p>
+    Some memory is non-volatile, or read-only (<strong>ROM</strong> or read-only memory.)
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+             </td>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     Memory Operations:
+   </p>
+   <p>
+    &nbsp;
+    <img src="./The von Neumann Computer Model_files/mem_ops.png" alt="Understanding the MAR and the MDR">
+   </p>
+  </li>
+ </ul>
+             </td>
+         </tr>
+     </tbody></table>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0060_mar_mdr"></a>
+
+
+    <h3>
+        6. Understanding the MAR and the MDR
+    </h3>
+ <hr>
+     <table border="0" cellspacing="0" cellpadding="2">
+         <tbody><tr>
+             <td valign="top">
+ <ul>
+  <li>
+   <p>
+    <strong>MAR</strong> stands for <em>memory address register</em>:
+   </p>
+   <ul>
+    <li>
+     <p>
+      <strong>MAR</strong> is connected to the <span style="color: blue">address bus</span>.
+     </p>
+    </li>
+    <li>
+     <p>
+      <strong>MAR</strong> is "<em>the only way</em>" for the CPU to communicate with <span style="color: blue">address bus</span>.
+     </p>
+    </li>
+    <li>
+     <p>
+      
+      <noindex><a href="http://en.wikipedia.org/wiki/Three-state_logic" target="_blank">Tri-state buffer</a></noindex>
+      between <strong>MAR</strong> and the address bus prevents <strong>MAR</strong> from continously dumping its output to the address bus.
+     </p>
+    </li>
+    <li>
+     <p>
+      <strong>MAR</strong> can hold either an <em>instruction address</em> or a <em>data address</em>.
+     </p>
+    </li>
+   </ul>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+             </td>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     Memory Circuitry:
+   </p>
+   <p>
+    &nbsp;
+    <img src="./The von Neumann Computer Model_files/mem_2d.png" alt="Understanding the MAR and the MDR">
+   </p>
+  </li>
+ </ul>
+             </td>
+         </tr>
+     </tbody></table>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0070_mar_mdr_cont"></a>
+
+
+    <h3>
+        7. Understanding the MAR and the MDR, Cont.
+    </h3>
+ <hr>
+     <table border="0" cellspacing="0" cellpadding="2">
+         <tbody><tr>
+             <td valign="top">
+ <ul>
+  <li>
+   <p>
+    <strong>MDR</strong> Stands for <em>memory data register</em>.
+   </p>
+   <ul>
+    <li>
+     <p>
+      <strong>MDR</strong> is connected to the <span style="color: blue">data bus</span>.
+     </p>
+    </li>
+    <li>
+     <p>
+      Data can go in both directions: to and from memory,
+     </p>
+     <ul style="list-style-type:none;">
+      <li>
+       <p>
+         therefore, <strong>MDR</strong> can load its data from
+       </p>
+       <ul>
+        <li>
+         <p>
+          the <span style="color: blue">data bus</span> (for reading data)
+         </p>
+        </li>
+        <li>
+         <p>
+          one of the CPU registers (for storing data.)
+         </p>
+        </li>
+       </ul>
+      </li>
+     </ul>
+    </li>
+    <li>
+     <p>
+      A <strong>2-1 MUX</strong> circuit selects input from one of the two.
+     </p>
+    </li>
+   </ul>
+  </li>
+ </ul>
+             </td>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     Memory Circuitry:
+   </p>
+   <p>
+    &nbsp;
+    <img src="./The von Neumann Computer Model_files/mem_2d.png" alt="Understanding the MAR and the MDR">
+   </p>
+  </li>
+ </ul>
+             </td>
+         </tr>
+     </tbody></table>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     More info:
+    <noindex><a href="http://www.cs.dartmouth.edu/~fabio/teaching/cs4-winter07/notes/15_architecture.html" target="_blank">von Neumann Architecture</a></noindex>
+    article by Prof. Fabio Pellacini, Dartmouth College, NH.
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0080_processing_unit"></a>
+
+
+    <h3>
+        8. ALU, the Processing Unit
+    </h3>
+ <hr>
+     <table border="0" cellspacing="0" cellpadding="2">
+         <tbody><tr>
+             <td valign="top">
+ <ul>
+  <li>
+   <p>
+    Processing unit is hardware that implements Arithmetic and Logical Operations.
+   </p>
+  </li>
+  <li>
+   <p>
+    <strong>ALU</strong> stands for <em>Arithmetic and Logic Unit</em>, capable of performing
+   </p>
+<pre>        <span style="color: blue">ADD</span>, <span style="color: blue">SUBTRACT</span>, <span style="color: blue">AND</span>, <span style="color: blue">OR</span>, and <span style="color: blue">NOT</span>
+</pre>
+   <p>
+    operations.
+   </p>
+  </li>
+ </ul>
+             </td>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     The ALU:
+   </p>
+   <p>
+    &nbsp;
+    <img src="./The von Neumann Computer Model_files/alu_ops.png" alt="x86 data path">
+   </p>
+  </li>
+ </ul>
+             </td>
+         </tr>
+     </tbody></table>
+ <ul>
+  <li>
+   <p>
+    The size of input quantities of ALU is often referred to as <em>word length</em> of the computer.
+   </p>
+  </li>
+  <li>
+   <p>
+    Many processors today have word length of 32 and 64 bit.
+   </p>
+  </li>
+  <li>
+   <p>
+    Processing unit also includes a set of <strong>registers</strong> for <em>temporary storage</em> of data and memory addressing.
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0090_word_length"></a>
+
+
+    <h3>
+        9. ALU and the Word Length
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    The size of quantities processed by ALU is the <em>word length</em> of the computer.
+   </p>
+  </li>
+  <li>
+   <p>
+    The word length does not affect what a computer can compute.
+   </p>
+  </li>
+  <li>
+   <p>
+    A computer with a smaller word length can do <em>the same</em> computation as one with a larger word length...
+   </p>
+   <ul style="list-style-type:none;">
+    <li>
+     <p>
+       ...but it will take more time.
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    For example, to add two 64 bit numbers,
+   </p>
+<pre>    word length = 16 takes 4 adds.
+    word length = 32 takes 2 adds.
+    word length = 64 takes 1 add.
+</pre>
+  </li>
+ </ul>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0100_control_unit"></a>
+
+
+    <h3>
+        10. Control Unit
+    </h3>
+ <hr>
+     <table border="0" cellspacing="0" cellpadding="2">
+         <tbody><tr>
+             <td valign="top">
+ <ul>
+  <li>
+   <p>
+    Manages the Precessing Unit.
+   </p>
+  </li>
+  <li>
+   <p>
+    Implemented as FSM.
+   </p>
+  </li>
+  <li>
+   <p>
+    FSM directs all activity.
+   </p>
+  </li>
+  <li>
+   <p>
+    Clock-based step-by-step precessing, cycle-by-cycle.
+   </p>
+  </li>
+  <li>
+   <p>
+    FSM is controlled by the
+   </p>
+   <ol>
+    <li>
+     <p>
+       Clock signal
+     </p>
+    </li>
+    <li>
+     <p>
+      Instruction Register
+     </p>
+    </li>
+    <li>
+     <p>
+      Reset signal
+     </p>
+    </li>
+   </ol>
+  </li>
+ </ul>
+             </td>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     &nbsp;
+    <img src="./The von Neumann Computer Model_files/figure_4_1.png" alt="The von Neumann Machine">
+   </p>
+  </li>
+ </ul>
+             </td>
+         </tr>
+     </tbody></table>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0110_control_unit_cont"></a>
+
+
+    <h3>
+        11. Control Unit, Cont.
+    </h3>
+ <hr>
+     <table border="0" cellspacing="0" cellpadding="2">
+         <tbody><tr>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     Control unit includes
+   </p>
+   <ul>
+    <li>
+     <p>
+      Instruction Register <span style="color: blue">IR</span>
+     </p>
+    </li>
+    <li>
+     <p>
+      Instruction Pointier <span style="color: blue">IP</span> (aka Program Counter <span style="color: blue">PC</span>)
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    FSM <em>outputs</em> of the control unit,
+   </p>
+<pre>    - - - - -&gt;
+</pre>
+   <p>
+    shown by dash lines, have two purposes:
+   </p>
+   <ol>
+    <li>
+     <p>
+       Control processing that takes place inside the ALU.
+     </p>
+    </li>
+    <li>
+     <p>
+      Authorize read/write gate control of the CPU data-path.
+     </p>
+    </li>
+   </ol>
+  </li>
+  <li>
+   <p>
+    Control unit demo:
+    <a href="http://www.c-jump.com/CIS60/L01files/cjumpcxx.exe" target="_blank">cjumpcxx.exe</a>
+     <tt>-&gt;</tt>
+    <br>
+    <strong>CPU, memory, Assembly</strong> <tt>-&gt;</tt>
+    <br>
+    <strong>Protected memory</strong>.
+   </p>
+  </li>
+ </ul>
+             </td>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     &nbsp;
+    <img src="./The von Neumann Computer Model_files/figure_4_1.png" alt="The von Neumann Machine">
+   </p>
+  </li>
+ </ul>
+             </td>
+         </tr>
+     </tbody></table>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0120_input_output"></a>
+
+
+    <h3>
+        12. Input/Output
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    I/O controller provides the necessary interface to I/O devices.
+   </p>
+  </li>
+  <li>
+   <p>
+    Takes care of low-level, device-dependent details.
+   </p>
+  </li>
+  <li>
+   <p>
+    Provides necessary electrical signal interface.
+   </p>
+  </li>
+ </ul>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     &nbsp;
+    <img src="./The von Neumann Computer Model_files/input_output.png" alt="I/O controller interface">
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0130_input_output_ports"></a>
+
+
+    <h3>
+        13. Input/Output Ports
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    Processor and I/O interface points for exchanging data are called <span style="color: blue">I/O ports</span>.
+   </p>
+  </li>
+  <li>
+   <p>
+    Two ways of <em>mapping</em> I/O ports:
+   </p>
+   <ol>
+    <li>
+     <p>
+       <strong>Memory-mapped I/O</strong>:
+     </p>
+     <ul>
+      <li>
+       <p>
+        I/O ports are mapped to the memory address space.
+       </p>
+      </li>
+      <li>
+       <p>
+        Reading/writing I/O is similar to reading/writing memory.
+       </p>
+      </li>
+      <li>
+       <p>
+        Can use memory read/write instructions.
+       </p>
+      </li>
+      <li>
+       <p>
+        Motorola 68000 uses memory-mapped I/O.
+       </p>
+      </li>
+     </ul>
+    </li>
+    <li>
+     <p>
+      <strong>Isolated I/O</strong>:
+     </p>
+     <ul>
+      <li>
+       <p>
+        Separate <em>I/O address space</em>.
+       </p>
+      </li>
+      <li>
+       <p>
+        Intel 80x86 processors support isolated I/O.
+       </p>
+      </li>
+      <li>
+       <p>
+        Requires special I/O instructions, like <span style="color: blue">IN</span> and <span style="color: blue">OUT</span> on x86.
+       </p>
+      </li>
+     </ul>
+    </li>
+   </ol>
+  </li>
+ </ul>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0140_input_output_address_space"></a>
+
+
+    <h3>
+        14. Input/Output Address Space
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    Pentium x86 provides 64 KB of <span style="color: blue">I/O address space</span>.
+   </p>
+  </li>
+  <li>
+   <p>
+    Can be used for 8-, 16-, and 32-bit I/O ports.
+   </p>
+  </li>
+  <li>
+   <p>
+    Combination cannot exceed the total I/O address space, can have either
+   </p>
+   <ul>
+    <li>
+     <p>
+      64 K 8-bit ports 
+     </p>
+    </li>
+    <li>
+     <p>
+      32 K 16-bit ports
+     </p>
+    </li>
+    <li>
+     <p>
+      16 K 32-bit ports
+     </p>
+    </li>
+    <li>
+     <p>
+      A combination of these for a total of 64 KB.
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    <span style="color: blue">I/O instructions</span> do not go through memory <em>segmentation</em> or <em>paging</em>.
+   </p>
+  </li>
+  <li>
+   <p>
+    <span style="color: blue">I/O address</span> refers to the physical I/O address.
+   </p>
+  </li>
+ </ul>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0150_input_output_protected"></a>
+
+
+    <h3>
+        15. Console Input/Output in Protected Memory Mode
+    </h3>
+ <hr>
+     <table border="0" cellspacing="0" cellpadding="2">
+         <tbody><tr>
+             <td valign="top">
+ <ul>
+  <li>
+   <p>
+    Using console in Protected Memory Mode:
+   </p>
+   <ul>
+    <li>
+     <p>
+      Keyboard input
+     </p>
+    </li>
+    <li>
+     <p>
+      Console display output
+     </p>
+    </li>
+    <li>
+     <p>
+      Ascii character encoding
+     </p>
+    </li>
+   </ul>
+  </li>
+ </ul>
+             </td>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     Von Neumann Computer System Block Diagram:
+   </p>
+   <p>
+    &nbsp;
+    <img src="./The von Neumann Computer Model_files/Von_Neumann_Computer_System_Block.gif" alt="Von Neumann Computer System Block Diagram">
+   </p>
+  </li>
+ </ul>
+             </td>
+         </tr>
+     </tbody></table>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0160_instruction_processing"></a>
+
+
+    <h3>
+        16. Instruction Processing
+    </h3>
+ <hr>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     Central idea of von Neumann model is that both program and data stored in computer memory:
+   </p>
+   <ul>
+    <li>
+     <p>
+      Program is a sequence of instructions
+     </p>
+    </li>
+    <li>
+     <p>
+      Instruction is a binary encoding of operations and operands:
+     </p>
+    </li>
+    <li>
+     <p>
+      For example, an arithmetic expression
+     </p>
+     <ul style="list-style-type:none;">
+      <li>
+       <p>
+        <strong>-a + b * c</strong>
+       </p>
+      </li>
+     </ul>
+     <p>
+      could be computed by a program with three machine instructions
+     </p>
+<pre>    neg  ax       ; negate (multiply by -1)
+    imul bx, cx   ; multiply and store result in bx
+    add  ax, bx   ; add and store result in ax
+</pre>
+     <p>
+      where <span style="color: blue">NEG</span>, <span style="color: blue">IMUL</span>, <span style="color: blue">ADD</span> are arithemtic instructions, <strong>AX</strong>, <strong>BX</strong>, and <strong>CX</strong> are operands.
+     </p>
+    </li>
+    <li>
+     <p>
+      Instructions are most basic units of processing.
+     </p>
+    </li>
+    <li>
+     <p>
+      Instructions are executed under control of the control unit.
+     </p>
+    </li>
+   </ul>
+   <p>
+    &nbsp;
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0170_instruction_components"></a>
+
+
+    <h3>
+        17. Instruction Components
+    </h3>
+ <hr>
+     <table border="0" cellspacing="0" cellpadding="2">
+         <tbody><tr>
+             <td valign="top">
+ <ul>
+  <li>
+   <p>
+    Instruction in memory  has two parts:  opcode  and operands.
+   </p>
+  </li>
+  <li>
+   <p>
+    The opcode identifies the operation that instruction does
+   </p>
+  </li>
+  <li>
+   <p>
+    The operands are subjects of the operation, such as data values, registers, or memory addresses.
+   </p>
+  </li>
+  <li>
+   <p>
+    Due to variety of opcodes and operands, instructions may occupy different sizes of bytes in memory.
+   </p>
+  </li>
+  <li>
+   <p>
+    Instructions with no operands can have <em>implied operands</em>, those that are not explicitly shown.
+   </p>
+  </li>
+ </ul>
+             </td>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     Instruction formats:
+   </p>
+   <p>
+    &nbsp;
+    <img src="./The von Neumann Computer Model_files/cpuinstructionformats.jpg" alt="Instruction formats">
+   </p>
+  </li>
+ </ul>
+             </td>
+         </tr>
+     </tbody></table>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0180_intel"></a>
+
+
+    <h3>
+        18. Why Learn Intel x86 ISA ?
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    The x86 Intel CPU family is generally classified as a <em>Von Neumann Architecture Machine</em>.
+   </p>
+  </li>
+  <li>
+   <p>
+    Most pervasive ISA in the marketplace.
+   </p>
+  </li>
+  <li>
+   <p>
+    Opcodes have zero or more operands.
+   </p>
+  </li>
+  <li>
+   <p>
+    Instructions and operands have strong support for <em>data types</em>.
+   </p>
+  </li>
+  <li>
+   <p>
+    All x86 Assemblers are free, including Microsoft Macro Assembler,
+    <noindex><a href="http://www.masm32.com/" target="_blank">MASM.</a></noindex>
+   </p>
+  </li>
+  <li>
+   <p>
+    Fullscreen 32-bit debuggers <strong>WinDbg</strong>, <strong>OllyDbg</strong>, and <strong>MS Visual Studio</strong>.
+   </p>
+   <p>
+    &nbsp;
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0190_x86_instruction_set"></a>
+
+
+    <h3>
+        19. Design of the x86 CPU Instruction Set
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    <em>Instruction set architecture</em> (ISA) is an important design issue for CPU designers:
+   </p>
+   <ul style="list-style-type:none;">
+    <li>
+     <p>
+       <em>caches</em>, <em>pipelining</em>, <em>superscalar</em> implementation can be added to the design later, but
+     </p>
+    </li>
+    <li>
+     <p>
+      it is very difficult to change the CPU instructions once in production and people writing software...
+     </p>
+     <ul style="list-style-type:none;">
+      <li>
+       <p>
+         ...<span style="color: blue">LOOP</span> instruction on the x86 CPU sees very little use in modern high-performance programs.
+       </p>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    Challenges:
+   </p>
+   <ul>
+    <li>
+     <p>
+      <strong>Expandability</strong> is a big concern (predicting future needs.)
+     </p>
+    </li>
+    <li>
+     <p>
+      <strong>Legacy support</strong> is almost the opposite of expandability.
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    Each instruction requires some number of transistors on the CPU's silicon die.
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0200_instruction_set"></a>
+
+
+    <h3>
+        20. CPU Instruction Set
+    </h3>
+ <hr>
+     <table border="0" cellspacing="0" cellpadding="2">
+         <tbody><tr>
+             <td valign="top">
+ <ul>
+  <li>
+   <p>
+    A typical Von Neumann architecture encodes CPU instructions as numeric values in memory.
+   </p>
+  </li>
+  <li>
+   <p>
+    Programming and engineering of the <em>instruction set</em> is a major task in the CPU design.
+   </p>
+  </li>
+  <li>
+   <p>
+    Each instruction needs a <em>unique numeric opcode</em>.
+   </p>
+  </li>
+ </ul>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     Instruction formats:
+   </p>
+   <p>
+    &nbsp;
+    <img src="./The von Neumann Computer Model_files/cpuinstructionformats.jpg" alt="Instruction formats">
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+             </td>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+     Instruction decoder:
+   </p>
+   <p>
+    &nbsp;
+    <img src="./The von Neumann Computer Model_files/instruction_decoder.png" alt="Instruction decoder">
+   </p>
+  </li>
+ </ul>
+             </td>
+         </tr>
+     </tbody></table>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0210_intel_solutions"></a>
+
+
+    <h3>
+        21. History of IBM PC
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    Design a simple instruction set to begin with and leave room for later <strong>expansion</strong> -
+   </p>
+   <ul style="list-style-type:none;">
+    <li>
+     <p>
+       main reason the x86 is so popular and long-lived.
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    Intel started with a relatively simple CPU and figured out how to extend the instruction set to accommodate new features.
+   </p>
+  </li>
+  <li>
+   <p>
+    IBM decided that open documentation is a <em>good thing</em>.
+   </p>
+  </li>
+  <li>
+   <p>
+    IBM published the
+    <noindex><a href="http://en.wikipedia.org/wiki/IBM_PC" target="_blank">IBM PC</a></noindex>
+    <em>Technical Reference Manual</em>, with everything the engineers knew about the machine,
+    which was another reason for the success of the IBM PC platform.
+   </p>
+  </li>
+  <li>
+   <p>
+    See also:
+    <noindex><a href="http://itc.conversationsnetwork.org/shows/detail1671.html" target="_blank">25 Years of the IBM PC</a></noindex>
+    and CNN article
+    <a href="http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html" http:="" www.cnn.com="" 2004="" tech="" ptech="" 01="" 29="" ctrlaltdelete.man.ap="" "="" target="_blank">Meet the inventor of Ctrl-Alt-Delete</a>
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0220_x86_family"></a>
+
+
+    <h3>
+        22. Early x86 Processor Family
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    Intel introduced microprocessors in 1969: 4-bit microprocessor 4004.
+   </p>
+  </li>
+  <li>
+   <p>
+    8-bit microprocessors are 8080 and 8085 models.
+   </p>
+  </li>
+  <li>
+   <p>
+    16-bit processors:
+   </p>
+   <ul>
+    <li>
+     <p>
+      8086 introduced in 1979.
+     </p>
+    </li>
+    <li>
+     <p>
+      20-bit address bus, 16-bit data bus.
+     </p>
+     <ul style="list-style-type:none;">
+      <li>
+       <p>
+         (8088 is a less expensive version.)
+       </p>
+      </li>
+     </ul>
+    </li>
+    <li>
+     <p>
+      Uses 8-bit data bus.
+     </p>
+    </li>
+    <li>
+     <p>
+      Can address up to 4 <span style="color: blue">segments</span> of 64 KB.
+     </p>
+    </li>
+    <li>
+     <p>
+      Referred to as the <span style="color: blue">real mode addressing</span>.
+     </p>
+    </li>
+    <li>
+     <p>
+      Still fully compatible with modern x86 chips.
+     </p>
+    </li>
+   </ul>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0230_cpu8086"></a>
+
+
+    <h3>
+        23. 8086 and 8088 CPU
+    </h3>
+ <hr>
+     <table border="0" cellspacing="0" cellpadding="2">
+         <tbody><tr>
+             <td valign="top">
+ <ul>
+  <li>
+   <p>
+    Year 1979
+   </p>
+  </li>
+  <li>
+   <p>
+    The 8088, 8086, and 80286 are 16-bit CPUs.
+   </p>
+  </li>
+  <li>
+   <p>
+    Internal registers are 16 bits in size.
+   </p>
+  </li>
+  <li>
+   <p>
+    The 8086 is faster than the 8088 because of its 16-bit data bus; the 8088 has only an 8-bit data bus.
+   </p>
+  </li>
+  <li>
+   <p>
+    The 16-bit data bus allows you to use EVEN and ALIGN on an 8086 processor to word-align data and thus improve data-handling efficiency.
+   </p>
+  </li>
+  <li>
+   <p>
+    Memory addresses on the 8086 and 8088 refer to actual physical addresses.
+   </p>
+  </li>
+  <li>
+   <p>
+    The 8086 and 8088 have 20 address pins, and 1 megabyte of addressable memory (which is the real mode segmented memory explained later) requires addresses of 20 bits in size.
+   </p>
+  </li>
+  <li>
+   <p>
+    See also:
+    <noindex><a href="http://www-scm.tees.ac.uk/users/a.clements/History/History.htm" target="_blank">Brief History of Microprocessors</a></noindex>
+   </p>
+  </li>
+ </ul>
+             </td>
+             <td valign="top">
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+    <img src="./The von Neumann Computer Model_files/Structure_8086.gif" alt="Structure 8086">
+   </p>
+  </li>
+ </ul>
+             </td>
+         </tr>
+     </tbody></table>
+ <ul style="list-style-type:none;">
+  <li>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0240_cpu80186"></a>
+
+
+    <h3>
+        24. 80186 CPU
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    A <span style="color: blue">faster</span> version of 8086.
+   </p>
+  </li>
+  <li>
+   <p>
+    <span style="color: blue">16-bit data bus</span> and <span style="color: blue">20-bit address bus</span>.
+   </p>
+  </li>
+  <li>
+   <p>
+    Improved instruction set.
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0250_cpu80286"></a>
+
+
+    <h3>
+        25. 80286 CPU
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    Year 1982.
+   </p>
+  </li>
+  <li>
+   <p>
+    Introduced <span style="color: blue">protected mode addressing</span>.
+   </p>
+  </li>
+  <li>
+   <p>
+    Enhanced with memory protection capabilities with <em>some instructions to control protected mode</em>.
+   </p>
+  </li>
+  <li>
+   <p>
+    Runs <span style="color: blue">faster</span>.
+   </p>
+  </li>
+  <li>
+   <p>
+    24-bit address bus.
+   </p>
+  </li>
+  <li>
+   <p>
+    16 MB address space.
+   </p>
+  </li>
+  <li>
+   <p>
+    <span style="color: blue">Segmentation</span> in protected mode is different from the <span style="color: blue">real mode</span>.
+   </p>
+  </li>
+  <li>
+   <p>
+    Allows the operating system to run <span style="color: blue">multiple processes</span> at the same time.
+   </p>
+  </li>
+  <li>
+   <p>
+    The 80286 was the minimum for running Windows 3.1 and higher.
+   </p>
+  </li>
+  <li>
+   <p>
+    Backwards compatible.
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0260_cpu80386"></a>
+
+
+    <h3>
+        26. 80386 CPU
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    Year 1985.
+   </p>
+  </li>
+  <li>
+   <p>
+    The 80386 and many of its successors are <span style="color: blue">32-bit</span> CPUs.
+   </p>
+  </li>
+  <li>
+   <p>
+    Internal registers are 32 bits in size.
+   </p>
+  </li>
+  <li>
+   <p>
+    Unlike its predecessors, the 80386 processor can handle both 16-bit and 32-bit data.
+   </p>
+  </li>
+  <li>
+   <p>
+    Supports entire instruction set of 80286.
+   </p>
+  </li>
+  <li>
+   <p>
+    Adds several <span style="color: blue">new instructions</span> as well.
+   </p>
+  </li>
+  <li>
+   <p>
+    Software written for the 80286 runs unchanged on the 80386, but the chip is <span style="color: blue">faster</span>.
+   </p>
+  </li>
+  <li>
+   <p>
+    The 80386 implements many new hardware-level features, including
+   </p>
+   <ul>
+    <li>
+     <p>
+      <span style="color: blue">paged memory</span>.
+     </p>
+    </li>
+    <li>
+     <p>
+      segmentation can be turned off (<span style="color: blue">flat model</span>).
+     </p>
+    </li>
+    <li>
+     <p>
+      support for multiple virtual 8086 processes.
+     </p>
+    </li>
+    <li>
+     <p>
+      addressing of up to <span style="color: blue">4 gigabytes</span> of memory.
+     </p>
+    </li>
+    <li>
+     <p>
+      specialized debugging registers.
+     </p>
+    </li>
+   </ul>
+  </li>
+ </ul>
+
+
+<a id="V77_0270_cpu80386_cont"></a>
+
+
+    <h3>
+        27. 80386 CPU, Cont.
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    32bit operating systems such as Windows NT required 80386 or higher processor.
+   </p>
+  </li>
+  <li>
+   <p>
+    More embedded systems nowdays use the 80386 CPU.
+   </p>
+  </li>
+  <li>
+   <p>
+    Examples include:
+   </p>
+   <ul>
+    <li>
+     <p>
+      high speed data communications devices.
+     </p>
+    </li>
+    <li>
+     <p>
+      graphics equipment.
+     </p>
+    </li>
+   </ul>
+   <ul>
+    <li>
+     <p>
+      tra-high-speed data acquisition gear.
+     </p>
+    </li>
+    <li>
+     <p>
+      Cockpit displays of some modern jetliners use 80386 as controllers.
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    See also:
+    <noindex><a href="http://www.x86.org/intel.doc/386manuals.htm" target="_blank">Intel 386 Manuals</a></noindex>
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0280_cpu80486"></a>
+
+
+    <h3>
+        28. 80486 CPU
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    Year 1989.
+   </p>
+  </li>
+  <li>
+   <p>
+    The 80486 processor is an enhanced version of the 80386 with
+   </p>
+   <ul>
+    <li>
+     <p>
+      instruction <em>pipelining</em> allows <span style="color: blue">parallel execution</span> capability to instruction decode and execution units.
+     </p>
+    </li>
+    <li>
+     <p>
+      executes many instructions 2-3 times faster.
+     </p>
+    </li>
+    <li>
+     <p>
+      achieves scalar execution of 1 instruction per clock cycle.
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    The chip incorporates
+   </p>
+   <ul>
+    <li>
+     <p>
+      <span style="color: blue">math coprocessor</span> for performing floating-point arithmetic
+     </p>
+    </li>
+    <li>
+     <p>
+      8 Kilobyte memory cache.
+     </p>
+    </li>
+   </ul>
+   <p>
+    (The math coprocessor was disabled on a variation of the chip called the 80486SX.)
+   </p>
+  </li>
+  <li>
+   <p>
+    New instructions.
+   </p>
+  </li>
+  <li>
+   <p>
+    Fully compatible with 80386 software.
+   </p>
+  </li>
+  <li>
+   <p>
+    Later versions introduced <span style="color: blue">energy savings</span> for laptops.
+   </p>
+  </li>
+  <li>
+   <p>
+    See also:
+    <noindex><a href="http://www.x86.org/intel.doc/486manuals.htm" target="_blank">Intel 486 Manuals</a></noindex>
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0290_cpu80586"></a>
+
+
+    <h3>
+        29. Pentium (Intel 80586)
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    Pentium was introduced in 1993, followed by
+   </p>
+   <ul style="list-style-type:none;">
+    <li>
+     <p>
+       Pentium Pro in 1995,
+     </p>
+    </li>
+    <li>
+     <p>
+      Pentium II in 1997,
+     </p>
+    </li>
+    <li>
+     <p>
+      Pentium III in 1999,
+     </p>
+    </li>
+    <li>
+     <p>
+      Pentium IV 2001.
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    Similar to 80486 but with <span style="color: blue">64-bit data bus</span>.
+   </p>
+  </li>
+  <li>
+   <p>
+    Wider internal datapaths: 128- and 256-bit wide.
+   </p>
+  </li>
+  <li>
+   <p>
+    Added second execution pipeline.
+   </p>
+  </li>
+  <li>
+   <p>
+    Superscalar performance allows two instructions per clock cycle.
+   </p>
+  </li>
+  <li>
+   <p>
+    Doubled on-chip level-1 cache:
+   </p>
+   <ul>
+    <li>
+     <p>
+      one 8 KB for data
+     </p>
+    </li>
+    <li>
+     <p>
+      another 8 KB for instructions.
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    Added branch prediction.
+   </p>
+  </li>
+  <li>
+   <p>
+    See also:
+    <noindex><a href="http://www.x86.org/intel.doc/586manuals.htm" target="_blank">Pentium Manuals</a></noindex>
+    <img src="./The von Neumann Computer Model_files/pentium_architecture.png" alt="Pentium architecture block diagram">
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0300_cpu_pentium_pro"></a>
+
+
+    <h3>
+        30. Pentium Pro
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    Introduced in 1995.
+   </p>
+  </li>
+  <li>
+   <p>
+    Three-way superscalar performance, 3 instructions per clock cycle.
+   </p>
+  </li>
+  <li>
+   <p>
+    36-bit address bus.
+   </p>
+  </li>
+  <li>
+   <p>
+    64 GB address space.
+   </p>
+  </li>
+  <li>
+   <p>
+    Introduced dynamic execution:
+   </p>
+   <ul>
+    <li>
+     <p>
+      Out-of-order execution.
+     </p>
+    </li>
+    <li>
+     <p>
+      Speculative execution.
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    In addition to the level-1 cache, has 256 KB level-2 cache.
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0310_cpu_pentium_ii"></a>
+
+
+    <h3>
+        31. Pentium II
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    Introduced in 1997.
+   </p>
+  </li>
+  <li>
+   <p>
+    Added multimedia (MMX) instructions.
+   </p>
+  </li>
+  <li>
+   <p>
+    Doubled on-chip level-1 cache:
+   </p>
+   <ul>
+    <li>
+     <p>
+      16 KB for data
+     </p>
+    </li>
+    <li>
+     <p>
+      16 KB for instructions.
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    Introduced comprehensive power management features:
+   </p>
+   <ul>
+    <li>
+     <p>
+      Sleep
+     </p>
+    </li>
+    <li>
+     <p>
+      Deep sleep.
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    In addition to the level-1 cache has 256 KB level-2 cache.
+   </p>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+<a id="V77_0320_cpu_itanium"></a>
+
+
+    <h3>
+        32. Itanium processor
+    </h3>
+ <hr>
+ <ul>
+  <li>
+   <p>
+    RISC design
+   </p>
+   <ul style="list-style-type:none;">
+    <li>
+     <p>
+       (All previous x86 designs were CISC.)
+     </p>
+    </li>
+   </ul>
+  </li>
+  <li>
+   <p>
+    64-bit processor
+   </p>
+  </li>
+  <li>
+   <p>
+    Uses 64-bit address bus
+   </p>
+  </li>
+  <li>
+   <p>
+    128-bit data bus
+   </p>
+  </li>
+  <li>
+   <p>
+    Introduced several advanced features:
+   </p>
+   <ul>
+    <li>
+     <p>
+      Speculative execution
+     </p>
+    </li>
+    <li>
+     <p>
+      Predication to eliminate branches
+     </p>
+    </li>
+    <li>
+     <p>
+      Branch prediction
+     </p>
+    </li>
+   </ul>
+   <p>
+    &nbsp;
+   </p>
+  </li>
+ </ul>
+
+
+    
+
+
+</body></html>

@@ -1,0 +1,398 @@
+
+<!-- saved from url=(0077)http://courses.cs.vt.edu/csonline/MachineArchitecture/Lessons/CPU/Lesson.html -->
+<html class="gr__courses_cs_vt_edu"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Untitled Document</title>
+
+<script language="JavaScript">
+<!--
+function jumpLink (url,name,widgets) {
+  popupWin = window.open (url,name,widgets);
+  popupWin.focus();
+}
+//-->
+</script>
+</head>
+
+<body bgcolor="#FFFFFF" data-gr-c-s-loaded="true">
+      <table width="100%" border="0">
+      <tbody><tr>
+      <td>
+      <blockquote> 
+        <p><img src="./MachineArchitecture_files/cpu_by_stamp.jpg" width="350" height="240" align="left">The 
+          heart of a computer is the central processing unit or CPU. This device 
+          contains all the circuitry that the computer needs to manipulate data 
+          and execute instructions. The CPU is amazingly small given the immense 
+          amount of circuitry it contains. We have already seen that the circuits 
+          of a computer are made of gates. Gates, however are also made of another 
+          tiny component called a transistor, and a modern CPU has millions and 
+          millions of transistors in its circuitry. The image to the right [<a href="http://courses.cs.vt.edu/csonline/MachineArchitecture/Lessons/CPU/Lesson.html#refs">Intel&nbsp;2000</a>] 
+          shows just how compact a CPU can be. The CPU is a Pentium� III processor 
+          for mobile PCs.</p>
+        <p>The CPU is composed of five basic components: RAM, registers, buses, 
+          the ALU, and the Control Unit. Each of these components are pictured 
+          in the diagram below. The diagram shows a top view of a simple CPU with 
+          16 bytes of RAM. To better understand the basic components of the CPU, 
+          we will consider each one in detail.</p>
+      </blockquote>
+      </td>
+      </tr>
+      <tr>
+      <td>
+      <blockquote> 
+        <ul>
+          <li><i>RAM</i>: this component is created from combining latches with 
+            a decoder. The latches create circuitry that can remember while the 
+            decoder creates a way for individual memory locations to be selected.<br>
+            <br>
+          </li>
+          <li><i><img src="./MachineArchitecture_files/cpu_circuit.gif" width="434" height="433" align="right">Registers</i>: 
+            these components are special memory locations that can be accessed 
+            very fast. Three registers are shown: the Instruction Register (IR), 
+            the Program Counter (PC), and the Accumulator.<br>
+            <br>
+          </li>
+          <li><i>Buses</i>: these components are the information highway for the 
+            CPU. Buses are bundles of tiny wires that carry data between components. 
+            The three most important buses are the address, the data, and the 
+            control buses.<br>
+            <br>
+          </li>
+          <li><i>ALU</i>: this component is the number cruncher of the CPU. The 
+            <i>A</i>rithmetic / <i>L</i>ogic <i>U</i>nit performs all the mathematical 
+            calculations of the CPU. It is composed of complex circuitry similar 
+            to the adder presented in the previous lesson. The ALU, however, can 
+            add, subtract, multiply, divide, and perform a host of other calculations 
+            on binary numbers.<br>
+            <br>
+          </li>
+          <li><i>Control Unit</i>: this component is responsible for directing 
+            the flow of instructions and data within the CPU. The Control Unit 
+            is actually built of many other selection circuits such as decoders 
+            and multiplexors. In the diagram above, the Decoder and the Multiplexor 
+            compose the Control Unit.</li>
+        </ul>
+      </blockquote>
+
+      </td>
+      </tr>
+      <tr>
+ 
+     <td>
+      <blockquote>   
+        <p>In order for a CPU to accomplish meaningful work, it must have two 
+          inputs: instructions and data. Instructions tell the CPU what actions 
+          need to be performed on the data. We have already seen how data is represented 
+          in the computer, but how do we represent instructions? The answer is 
+          that we represent instructions with binary codes just like data. In 
+          fact, the CPU makes no distinction about the whether it is storing instructions 
+          or data in RAM. This concept is called the <i>stored-program concept</i>. 
+          Brookshear [<a href="http://courses.cs.vt.edu/csonline/MachineArchitecture/Lessons/CPU/Lesson.html#refs">1997</a>] explains:</p>
+        <p>"Early computing devices were not known for their flexibility, 
+          as the program that each device executed tended to be built into the 
+          control unit as a part of the machine...One approach used to gain flexibility 
+          in early electronic computers was to design the control units so they 
+          could be conveniently rewired. A breakthrough came with the realization 
+          that the program, just like data, can be coded and stored in main memory. 
+          If the control unit is designed to extract the program from memory, 
+          decode the instructions, and execute them, a computer's program can 
+          be changed merely by changing the contents of the computer's memory 
+          instead of rewiring the control unit. This stored-program concept has 
+          become the standard approach used today. To apply it, a machine is designed 
+          to recognize certain bit patterns as representing certain instructions. 
+          This collection of instructions along with the coding system is called 
+          the <i>machine-language</i> because it defines the means by which we 
+          communicate algorithms to the machine."</p>
+        <p>Thus both inputs to the CPU are stored in memory, and the CPU functions 
+          by following a cycle of fetching an instruction, decoding it, and executing 
+          it. This process is known as the <i>fetch-decode-execute cycle</i>. 
+          The cycle begins when an instruction is transferred from memory to the 
+          IR along the data bus. In the IR, the unique bit patterns that make 
+          up the machine-language are extracted and sent to the Decoder. This 
+          component is responsible for the second step of the cycle, that is, 
+          recognizing which operation the bit pattern represents and activating 
+          the correct circuitry to perform the operation. Sometimes this involves 
+          reading data from memory, storing data in memory, or activating the 
+          ALU to perform a mathematical operation. Once the operation is performed, 
+          the cycle begins again with the next instruction. The CPU always knows 
+          where to find the next instruction because the Program Counter holds 
+          the address of the current instruction. Each time an instruction is 
+          completed, the program counter is advanced by one memory location.</p>
+        <p>Each machine instruction is composed of two parts: the op-code and 
+          the operand. According to Brookshear [<a href="http://courses.cs.vt.edu/csonline/MachineArchitecture/Lessons/CPU/Lesson.html#refs">1997</a>], "the 
+          bit pattern appearing in the op-code field indicates which of the elementary 
+          operations, such as STORE or JUMP, is requested by the instruction. 
+          The bit patterns found in the operand field field provide more detailed 
+          information about the operation specified by the op-code. <img src="./MachineArchitecture_files/instruction_format.gif" width="410" height="161" align="right">For 
+          example, in the case of a STORE operation, the information in the operand 
+          field indicates which register contains the data to be stored and which 
+          memory cell is to receive the data." The image to the right shows 
+          the format of an instruction for our CPU. The first three bits represent 
+          the op-code and the final six bits represent the operand. The middle 
+          bit distinguishes between operands that are memory addresses and operands 
+          that are numbers. When the bit is set to '1', the operand represents 
+          a number. A simple set of machine instructions for our CPU are listed 
+          in the table below. Notice that all the op-codes are given an English 
+          mnemonic to simplify programming. Together these mnemonics are called 
+          an <i>assembly language</i>. Programs written in assembly language must 
+          be converted to their binary representation before the CPU can understand 
+          them. This usually done by another program called an assembler, hence 
+          the name.</p>
+      </blockquote>
+    </td>
+    </tr>
+    </tbody></table>
+    <p>
+<table width="562" border="0" align="center" cellpadding="2">
+  <tbody><tr> 
+          <td width="13%" align="center" bgcolor="#CCCCCC"><i>Op-code</i></td>
+          <td width="14%" align="center" bgcolor="#CCCCCC"><i>Mnemonic</i></td>
+          <td width="55%" bgcolor="#CCCCCC"><i>Function</i></td>
+          <td width="18%" align="center" bgcolor="#CCCCCC"><i>Example</i></td>
+        </tr>
+        <tr> 
+          <td width="13%" align="center" bgcolor="#CCCCFF"><font size="2" face="Courier New, Courier, mono">001</font></td>
+          <td width="14%" align="center" bgcolor="#CCCCFF"><font face="Courier New, Courier, mono" size="2">LOAD</font></td>
+          <td width="55%" bgcolor="#CCCCFF"><font size="2">Load the value of the 
+            operand into the Accumulator<br>
+            </font></td>
+          <td width="18%" align="center" bgcolor="#CCCCFF"><font face="Courier New, Courier, mono" size="2">LOAD 
+            10</font></td>
+        </tr>
+        <tr> 
+          <td width="13%" align="center" bgcolor="#CCCCFF"><font size="2" face="Courier New, Courier, mono">010</font></td>
+          <td width="14%" align="center" bgcolor="#CCCCFF"><font face="Courier New, Courier, mono" size="2">STORE</font></td>
+          <td width="55%" bgcolor="#CCCCFF"><font size="2">Store the value of 
+            the Accumulator at the address specified by the operand</font></td>
+          <td width="18%" align="center" bgcolor="#CCCCFF"><font face="Courier New, Courier, mono" size="2">STORE 
+            8</font></td>
+        </tr>
+        <tr> 
+          <td width="13%" align="center" bgcolor="#CCCCFF"><font size="2" face="Courier New, Courier, mono">011</font></td>
+          <td width="14%" align="center" bgcolor="#CCCCFF"><font face="Courier New, Courier, mono" size="2">ADD</font></td>
+          <td width="55%" bgcolor="#CCCCFF"><font size="2">Add the value of the 
+            operand to the Accumulator</font></td>
+          <td width="18%" align="center" bgcolor="#CCCCFF"><font face="Courier New, Courier, mono" size="2">ADD 
+            #5</font></td>
+        </tr>
+        <tr> 
+          <td width="13%" align="center" bgcolor="#CCCCFF"><font size="2" face="Courier New, Courier, mono">100</font></td>
+          <td width="14%" align="center" bgcolor="#CCCCFF"><font face="Courier New, Courier, mono" size="2">SUB</font></td>
+          <td width="55%" bgcolor="#CCCCFF"><font size="2">Subtract the value 
+            of the operand from the Accumulator</font></td>
+          <td width="18%" align="center" bgcolor="#CCCCFF"><font face="Courier New, Courier, mono" size="2">SUB 
+            #1</font></td>
+        </tr>
+        <tr> 
+          <td width="13%" align="center" bgcolor="#CCCCFF"><font size="2" face="Courier New, Courier, mono">101</font></td>
+          <td width="14%" align="center" bgcolor="#CCCCFF"><font face="Courier New, Courier, mono" size="2">EQUAL</font></td>
+          <td width="55%" bgcolor="#CCCCFF"><font size="2">If the value of the 
+            operand equals the value of the Accumulator, skip the next instruction</font></td>
+          <td width="18%" align="center" bgcolor="#CCCCFF"><font face="Courier New, Courier, mono" size="2">EQUAL 
+            #20</font></td>
+        </tr>
+        <tr> 
+          <td width="13%" align="center" bgcolor="#CCCCFF"><font size="2" face="Courier New, Courier, mono">110</font></td>
+          <td width="14%" align="center" bgcolor="#CCCCFF"><font face="Courier New, Courier, mono" size="2">JUMP</font></td>
+          <td width="55%" bgcolor="#CCCCFF"><font size="2">Jump to a specified 
+            instruction by setting the Program Counter to the value of the operand</font></td>
+          <td width="18%" align="center" bgcolor="#CCCCFF"><font face="Courier New, Courier, mono" size="2">JUMP 
+            6</font></td>
+        </tr>
+        <tr> 
+          <td width="13%" align="center" bgcolor="#CCCCFF"><font size="2" face="Courier New, Courier, mono">111</font></td>
+          <td width="14%" align="center" bgcolor="#CCCCFF"><font face="Courier New, Courier, mono" size="2">HALT</font></td>
+          <td width="55%" bgcolor="#CCCCFF"><font size="2">Stop execution</font></td>
+          <td width="18%" align="center" bgcolor="#CCCCFF"><font face="Courier New, Courier, mono" size="2">HALT</font></td>
+        </tr>
+        <tr> 
+          <td width="100%" align="center" colspan="4"><b>A simple machine language</b></td>
+        </tr>
+      </tbody></table>
+      </p><blockquote> 
+        <p>In the machine language above, notice that some of the operands include 
+          a # symbol. This symbol tells the CPU that the operand represents a 
+          number rather than a memory address. Thus, when the assembler translates 
+          an instruction with a # symbol, the resulting machine code will have 
+          a '1' in the position of the number bit. Also notice the central role 
+          that the Accumulator register plays. Nearly all the operations affect 
+          the value of this register since the Accumulator acts as a temporary 
+          memory location for storing calculations in progress. With our machine 
+          language defined, we are ready to take a look at some simple programs.</p>
+        <p>The first program is called Sum. This program adds the numbers stored 
+          in two memory locations. Mathematically, this program represents the 
+          formulas <i>x</i> = 2, <i>y</i> = 5, <i>x</i> + <i>y</i> = <i>z</i> 
+          where the variables x, y, and z correspond with the memory locations 
+          13, 14, and 15 respectively. The instructions for the program are listed 
+          below. Read through the program, and then view the animation of this 
+          program by clicking the "View Animation" link.</p>
+      </blockquote>
+      
+<table width="600" border="0" align="center">
+  <tbody><tr bgcolor="#CCCCCC"> 
+          <td align="center" width="3%">#</td>
+          <td align="center" width="20%"><i>Machine code</i></td>
+          <td align="center" width="18%"><i>Assembly code</i></td>
+          <td width="59%"><i>Description</i></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">0</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">001 
+            1 000010</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">LOAD&nbsp;&nbsp;&nbsp;#2</font></td>
+          <td width="59%"><font size="2">Load the value 2 into the Accumulator</font></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">1</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">010 
+            0 001101</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">STORE&nbsp;&nbsp;13</font></td>
+          <td width="59%"><font size="2">Store the value of the Accumulator in 
+            memory location 13 </font></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">2</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">001 
+            1 000101</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">LOAD&nbsp;&nbsp;&nbsp;#5</font></td>
+          <td width="59%"><font size="2">Load the value 5 into the Accumulator</font></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">3</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">010 
+            0 001110</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">STORE&nbsp;&nbsp;14</font></td>
+          <td width="59%"><font size="2">Store the value of the Accumulator in 
+            memory location 14</font></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">4</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">001 
+            0 001101</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">LOAD&nbsp;&nbsp;&nbsp;13</font></td>
+          <td width="59%"><font size="2">Load the value of memory location 13 
+            into the Accumulator</font></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">5</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">011 
+            0 001110</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">ADD&nbsp;&nbsp;&nbsp;&nbsp;14</font></td>
+          <td width="59%"><font size="2">Add the value of memory location 14 to 
+            the Accumulator</font></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">6</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">010 
+            0 001111</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">STORE&nbsp;&nbsp;15</font></td>
+          <td width="59%"><font size="2">Store the value of the Accumulator in 
+            memory location 15</font></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">7</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">111 
+            0 000000</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">HALT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></td>
+          <td width="59%"><font size="2">Stop execution</font></td>
+        </tr>
+        <tr> 
+          <td align="center" colspan="4"><b>Sum program&nbsp;&nbsp;&nbsp;</b>[<a href="javascript:jumpLink(&#39;sumprogram.html&#39;,&#39;sumprogram&#39;,&#39;width=570,height=460&#39;)">view 
+            animation</a>]</td>
+        </tr>
+      </tbody></table>
+      <blockquote> 
+        <p>The second program is called Count. This program counts up to a number 
+          specified by the programmer in the first instruction. Notice that this 
+          program incorporates a loop construction by using the JUMP and EQUAL 
+          instructions. Every time the value in the Accumulator is incremented, 
+          the count is tested to see if it has reached the specified amount. Read 
+          through the program, and then view the animation of this program by 
+          clicking the "View Animation" link.</p>
+      </blockquote>
+      
+<table width="600" border="0" align="center">
+  <tbody><tr bgcolor="#CCCCCC"> 
+          <td align="center" width="3%">#</td>
+          <td align="center" width="20%"><i>Machine code</i></td>
+          <td align="center" width="18%"><i>Assembly code</i></td>
+          <td width="59%"><i>Description</i></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">0</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">001 
+            1 000101</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">LOAD&nbsp;&nbsp;&nbsp;#5</font></td>
+          <td width="59%" rowspan="2"><font size="2">These two operations set 
+            the count value to five</font></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">1</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">010 
+            0 001111</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">STORE&nbsp;&nbsp;15</font></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">2</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">001 
+            1 000000</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">LOAD&nbsp;&nbsp;&nbsp;#0</font></td>
+          <td width="59%"><font size="2">Initialize the count to zero</font></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">3</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">101 
+            0 001111</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">EQUAL&nbsp;&nbsp;15</font></td>
+          <td width="59%"><font size="2">Test to see if count is complete; if 
+            yes, skip next instruction and go to instruction 5; if no, go to next 
+            instruction </font></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">4</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">110 
+            1 000110</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">JUMP&nbsp;&nbsp;&nbsp;#6</font></td>
+          <td width="59%"><font size="2">Set Program Counter to 6 </font></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">5</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">111 
+            0 000000</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">HALT&nbsp; 
+            &nbsp;&nbsp; </font></td>
+          <td width="59%"><font size="2">Stop execution</font></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">6</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">011 
+            1 000001</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">ADD&nbsp;&nbsp;&nbsp;&nbsp;#1</font></td>
+          <td width="59%"><font size="2">Increment the count in the Accumulator</font></td>
+        </tr>
+        <tr bgcolor="#CCCCFF"> 
+          <td align="center" width="3%">7</td>
+          <td align="center" width="20%"><font face="Courier New, Courier, mono" size="2">110 
+            1 000011</font></td>
+          <td align="center" width="18%"><font face="Courier New, Courier, mono" size="2">JUMP&nbsp;&nbsp;&nbsp;#3</font></td>
+          <td width="59%"><font size="2">Set Program Count to 3 </font></td>
+        </tr>
+        <tr> 
+          <td align="center" colspan="4"><b>Count program&nbsp;&nbsp;&nbsp;</b>[<a href="javascript:jumpLink(&#39;countprogram.html&#39;,&#39;countprogram&#39;,&#39;width=570,height=460&#39;)">view 
+            animation</a>]</td>
+        </tr>
+      </tbody></table>
+      
+<p><img src="./MachineArchitecture_files/line.gif" width="100%" height="2" border="0" align="top"> </p>
+<blockquote> <b><a name="refs"></a>References</b> 
+        <ul>
+          <li>Brookshear, J. G. (1997), <i>Computer Science: An Overview</i>, 
+            Fifth Edition, Addison-Wesley, Reading, MA. </li>
+          <li>Intel (2000), "Virtual press kit for 0.18 micron processor 
+            launch," <a href="http://developer.intel.com/pressroom/kits/events/18micron/photos.htm" target="_blank">http://developer.intel.com/pressroom/kits/events/18micron/photos.htm</a>. 
+          </li>
+        </ul>
+      </blockquote>
+
+
+
+</body></html>
