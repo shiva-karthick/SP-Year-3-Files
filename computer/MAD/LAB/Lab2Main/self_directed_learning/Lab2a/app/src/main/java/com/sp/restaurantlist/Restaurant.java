@@ -12,7 +12,7 @@ public class Restaurant {
     }
 
     public void setName(String restaurantName) {
-        this.restaurantName = restaurantName;
+        this.restaurantName = restaurantName;setContentView(R.layout.main);
     }
 
     // get and set addresses

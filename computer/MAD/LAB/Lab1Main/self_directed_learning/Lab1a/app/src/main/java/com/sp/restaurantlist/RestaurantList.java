@@ -1,5 +1,7 @@
 package com.sp.restaurantlist;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,20 +23,20 @@ public class RestaurantList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        restaurantName = (EditText)findViewById(R.id.restaurant_name);
+        restaurantName = (EditText) findViewById(R.id.restaurant_name);
         restaurantTypes = (RadioGroup) findViewById(R.id.restaurant_types);
 
-        buttonSave = (Button)findViewById(R.id.button_save);
+        buttonSave = (Button) findViewById(R.id.button_save);
         buttonSave.setOnClickListener(onSave);
 
-        restaurantAddress = (EditText)findViewById(R.id.restaurant_address);
-        restaurantTel = (EditText)findViewById(R.id.restaurant_tel);
+        restaurantAddress = (EditText) findViewById(R.id.restaurant_address);
+        restaurantTel = (EditText) findViewById(R.id.restaurant_tel);
 
     }
 
     private View.OnClickListener onSave = new View.OnClickListener() {
         @Override
-        public void onClick(View v){
+        public void onClick(View v) {
 
             // To read data from restaurantName EditText
             String nameStr = restaurantName.getText().toString();
@@ -47,7 +49,7 @@ public class RestaurantList extends AppCompatActivity {
 
             String restType = "";
             // To read selection of restaurantTypes radioGroup
-            switch (restaurantTypes.getCheckedRadioButtonId()){
+            switch (restaurantTypes.getCheckedRadioButtonId()) {
                 case R.id.chinese:
                     restType = "Chinese";
                     break;
@@ -71,7 +73,8 @@ public class RestaurantList extends AppCompatActivity {
                     break;
             }
             String combineStr = nameStr + "\n" + addressStr + "\n" + telStr + "\n" + restType;
-            Toast.makeText(v.getContext(),combineStr,Toast.LENGTH_LONG).show();
+            Toast.makeText(v.getContext(), combineStr, Toast.LENGTH_LONG).show();
         }
     };
 }
+

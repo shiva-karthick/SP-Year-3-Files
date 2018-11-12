@@ -1,9 +1,0 @@
-@page	{margin: 0.5in;}
-/* set printed page with half inch margins */
-
-#menubar {display: none;}
-/* do not print the menubar that displays at the top of the Web page */
-
-.box	{text-align: left; font-size: 12pt; font-family: Times New Roman;}
-.posit	{border-width: 0px; width: 7.125in; height: 5.361in;}
-/* specific styles set for paragraph box and image posit classes */
