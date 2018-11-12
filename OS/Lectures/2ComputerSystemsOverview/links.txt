@@ -1,0 +1,23 @@
+Operating Systems
+https://en.wikipedia.org/wiki/Operating_system
+
+Machine Architecture
+http://courses.cs.vt.edu/csonline/MachineArchitecture/Lessons/CPU/Lesson.html#refs
+
+Notes:
+Thus both inputs to the CPU are stored in memory, and the CPU functions by following a cycle of fetching an instruction, decoding it, and executing it. This process is known as the fetch-decode-execute cycle. The cycle begins when an instruction is transferred from memory to the IR along the data bus. 
+
+In the IR, the unique bit patterns that make up the machine-language are extracted and sent to the Decoder. This component is responsible for the second step of the cycle, that is, recognizing which operation the bit pattern represents and activating the correct circuitry to perform the operation. 
+
+Sometimes this involves reading data from memory, storing data in memory, or activating the ALU to perform a mathematical operation. Once the operation is performed, the cycle begins again with the next instruction. The CPU always knows where to find the next instruction because the Program Counter holds the address of the current instruction. Each time an instruction is completed, the program counter is advanced by one memory location.
+
+The von Neumann Computer Model
+http://www.c-jump.com/CIS77/CPU/VonNeumann/lecture.html
+
+x86 Assembly
+https://en.wikibooks.org/wiki/X86_Assembly
+
+x86 assembly crash course
+https://www.youtube.com/watch?v=75gBFiFtAb8
+
+
