@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="sort_names">
+        <item>By Restaurant Name, Ascending</item>
+        <item>By Restaurant Name, Descending</item>
+        <item>By Restaurant Type</item>
+        <item>By Restaurant Address, Ascending</item>
+        <item>By Restaurant Address, Descending</item>
+    </string-array>
+
+    <string-array name="sort_clauses">
+        <item>restaurantName ASC</item>
+        <item>restaurantName DESC</item>
+        <item>restaurantType ASC</item>
+        <item>restaurantAddress ASC</item>
+        <item>restaurantAddress ASC</item>
+    </string-array>
+</resources>

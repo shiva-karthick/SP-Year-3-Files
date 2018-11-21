@@ -1,12 +1,11 @@
 package com.sp.restaurantlist;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-// imported by me
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 
 public class RestaurantHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "restaurantlist.db";
@@ -36,6 +35,12 @@ public class RestaurantHelper extends SQLiteOpenHelper {
                 "restaurantTel, restaurantType FROM restaurants_table ORDER BY restaurantName", null));
     }
 
+    /* Read a particular record from restaurants_table with id provided  */
+    public Cursor getById(String id){
+        String[] args = {id};
+        return (getReadableDatabase().rawQuery("SELECT _id, restaurantName, restaurantAddress, restaurantTel, restaurantType FROM restaurants_table WHERE _ID=?", args));
+    }
+
     /* Write a record into restaurants_table */
     public void insert(String restaurantName, String restaurantAddress, String restaurantTel, String restaurantType) {
         ContentValues cv = new ContentValues();
@@ -45,6 +50,22 @@ public class RestaurantHelper extends SQLiteOpenHelper {
         cv.put("restaurantTel", restaurantTel);
         cv.put("restaurantType", restaurantType);
         getWritableDatabase().insert("restaurants_table", "restaurantName", cv);
+    }
+
+    /* Update a particular record in restaurants_table with id provided */
+    public void update(String id, String restaurantName, String restaurantAddress, String restaurantTel, String restaurantType){
+        ContentValues cv = new ContentValues();
+        String[] args = {id};
+        cv.put("restaurantName", restaurantName);
+        cv.put("restaurantAddress", restaurantAddress);
+        cv.put("restaurantTel", restaurantTel);
+        cv.put("restaurantType", restaurantType);
+        getWritableDatabase().update("restaurants_table", cv, "_ID=?", args);
+    }
+
+    /* Read a record id value from restaurants_table */
+    public String getID(Cursor c){
+        return (c.getString(0));
     }
 
     public String getRestaurantName(Cursor c) {
