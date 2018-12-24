@@ -1,0 +1,3 @@
+Answer Key : 
+https://5465da.blogspot.com/2015/05/et0023-operating-systems.html?m=1
+Spooling: The process of placing data in a temporary working area for another programs to process.
