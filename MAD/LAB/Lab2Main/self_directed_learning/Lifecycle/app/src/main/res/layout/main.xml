@@ -1,84 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HelloWorld">
+    tools:context=".HelloWorld"
+    android:background="#006400">
 
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="51dp">
+        android:layout_height="wrap_content"
+        android:text="Demo of Activity Lifecycle"
+        android:textSize="50sp" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Enter a number : " />
-
-        <EditText
-            android:id="@+id/first_number"
-            android:layout_width="320dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Enter another number :" />
-
-        <EditText
-            android:id="@+id/editText2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <RadioButton
-            android:id="@+id/add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ADD" />
-
-        <RadioButton
-            android:id="@+id/subtract"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Subtract" />
-
-        <RadioButton
-            android:id="@+id/multiply"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Multiply" />
-
-        <RadioButton
-            android:id="@+id/divide"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Divide" />
-
-        <Button
-            android:id="@+id/calculate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Calculate !" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:text="Result : " />
-
-        <TextView
-            android:id="@+id/result"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:text="nil" />
-    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
