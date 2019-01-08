@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1039905539586",
+    "firebase_url": "https://agliofirebasetest.firebaseio.com",
+    "project_id": "agliofirebasetest",
+    "storage_bucket": "agliofirebasetest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039905539586:android:b0315fec4156519c",
+        "android_client_info": {
+          "package_name": "com.android.agliofirebasetest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1039905539586-a9skskj09svf9kfa33d5blqaslhv1bkt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlqpHN0SUr8iT70JJVnYbAbnRBouJSWu8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

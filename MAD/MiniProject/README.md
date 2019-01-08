@@ -1,8 +1,18 @@
+# Add these in report because you need to submit an updated verison of your report
+
+Our database synchronises data,so that every time data changes, all connected devices receive that change within milliseconds. A message sent by one person in friendly chat quickly shows up in their friends app and this makes for seamless user experience and simplifies the code for you firebase apps also remain responsive even when the user is offline because the database can cache your data in the app using only a few lines of code.
+
+- multi-user, colloborative and real time
+
+# Project
+
+- [Add Firebase to Your Android Project](https://firebase.google.com/docs/android/setup)
+
 ### Github repositories
 
 - [food feed](https://github.com/mstfnacar/foodfeed)
 
-### mad Mini Project
+### mad Mini Project ideas
 
 - [OLIO - The Food Sharing Revolution](https://olioex.com/)
 - [food share app - Google Search](https://www.google.com.sg/search?q=food+share+app&rlz=1C1CHZL_enSG803SG803&oq=food+share&aqs=chrome.0.69i59j69i60j0j69i57j0l2.5703j0j7&sourceid=chrome&ie=UTF-8)
