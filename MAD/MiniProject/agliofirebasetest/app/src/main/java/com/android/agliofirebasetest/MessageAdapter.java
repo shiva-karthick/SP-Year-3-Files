@@ -2,6 +2,9 @@ package com.android.agliofirebasetest;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,18 +37,18 @@ public class MessageAdapter extends ArrayAdapter<Aglio> {
         Log.d("MessageAdapter", "shankar" + message.getPhotoUrl());
 
 
-        boolean isPhoto = message.getPhotoUrl() != null;
-        if (isPhoto) {
-            messageTextView.setVisibility(View.GONE);
-            photoImageView.setVisibility(View.VISIBLE);
-            Glide.with(photoImageView.getContext())
-                    .load(message.getPhotoUrl())
-                    .into(photoImageView);
-        } else {
-            messageTextView.setVisibility(View.VISIBLE);
-            photoImageView.setVisibility(View.GONE);
-            messageTextView.setText(message.getName());
-        }
+//        boolean isPhoto = message.getPhotoUrl() != null;
+//        if (isPhoto) {
+//            messageTextView.setVisibility(View.GONE);
+//            photoImageView.setVisibility(View.VISIBLE);
+//            Glide.with(photoImageView.getContext())
+//                    .load(message.getPhotoUrl())
+//                    .into(photoImageView);
+//        } else {
+//            messageTextView.setVisibility(View.VISIBLE);
+//            photoImageView.setVisibility(View.GONE);
+//            messageTextView.setText(message.getName());
+//        }
 
         // parse the data here
         nameTextView.setText(message.getName());
@@ -54,6 +57,11 @@ public class MessageAdapter extends ArrayAdapter<Aglio> {
         messageTextView.setText(message.getDescription());
 
 
+
+        photoImageView.setVisibility(View.VISIBLE);
+        byte[] decodedString = Base64.decode(message.getPhotoUrl(), Base64.DEFAULT);
+        Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        photoImageView.setImageBitmap(decodedByte);
 
         return convertView;
     }

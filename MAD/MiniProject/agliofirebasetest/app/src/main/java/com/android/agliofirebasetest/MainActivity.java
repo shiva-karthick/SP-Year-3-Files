@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -63,9 +64,12 @@ public class MainActivity extends AppCompatActivity {
                 Bitmap bm = BitmapFactory.decodeFile(imagePath);
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
-                byte[] b = baos.toByteArray();
+                byte[] imageBytes  = baos.toByteArray();
 
-                Aglio aglio = new Aglio(editText1.getText().toString(),editText2.getText().toString(),b.toString());
+                // test the below code -> it works uruG Thanks
+                String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
+
+                Aglio aglio = new Aglio(editText1.getText().toString(),editText2.getText().toString(),imageString);
 
                 // Remember push creates a unique id in database
                 demoRef.push().setValue(aglio);
